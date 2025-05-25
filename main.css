@@ -1,0 +1,144 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.raw{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; 
+    font-family: "Playwrite DK Loopet", cursive;
+    background: linear-gradient(to bottom,#020A18,#0863a5);;
+}
+
+.container{
+    display: flex;
+     flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-align: center; /* Center all inline elements like h1 and text */
+    border: none;
+    height: 600px;
+    width: 600px;
+    padding-top: 50px;
+    padding-bottom: 250px;
+    padding-left: 100px;
+    padding-right: 100px;
+    background-color: #071a3a;
+    color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 60px rgba(6, 193, 244, 0.2); /* blue soft glow */
+}
+
+.raw h1{
+    padding-bottom: 20px;
+    text-align: right;
+    
+}
+
+#location{
+    margin-left: px;
+    margin-bottom: 25px;
+    height: 45px;
+    width: 315px;
+    border-radius: 9px;
+    border: none;
+}
+
+#location {
+  display: block;         /* Make it a block-level element */
+  margin: 0 auto 20px;    /* Center horizontally and add bottom margin */
+  padding: 12px;
+  width: 80%;             /* Responsive width */
+  max-width: 400px;       /* Optional max width */
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+
+.btn{
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: center; /* Center the button horizontally */
+    margin-top: 20px;
+}
+
+#bttn{
+   
+    height: 45px;
+    width: 315px;
+    border-radius: 9px;
+    font-family:"Playwrite DK Loopet", cursive;
+    font-weight: 700;
+    color: white;
+    border: none;
+    background-color: #020A18;
+    border: 2px solid #0863a5;
+    cursor: pointer;
+}
+
+#bttn:hover{
+    background-color: #0863a5;
+    color: #020A18;
+    font-weight: 700;
+}
+
+#location::placeholder{
+    font-family: "Playwrite DK Loopet", cursive;
+    text-align: center;
+    font-weight: 700;
+    color: grey;
+    outline: none;
+}
+
+#location{
+    text-align: center;
+}
+
+#weatherResults{
+    text-align: center;
+}
+
+
+/* effects */
+.container {          
+  opacity: 0;
+  transform: translateX(-250px);
+  transition: opacity 1.6s ease-in-out, transform 1.6s ease-in-out;
+}
+
+.container.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* effects */
+
+
+/* responsive */
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+  }
+
+  input#location {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  button#bttn {
+    width: 100%;
+  }
+}
+/* responsive */
+
+#error{
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: rgb(187, 35, 35);
+}

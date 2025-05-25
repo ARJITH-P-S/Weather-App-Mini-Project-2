@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Weather Updates</title>
+  </head>
+  <link rel="stylesheet" href="main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Playwrite+DK+Loopet:wght@100..400&display=swap"
+    rel="stylesheet"/>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <body>
+    <div class="raw">
+      <div class="container">
+        <h1>Get weather updates <i class="fa-solid fa-temperature-high"></i> </h1>
+        <input id="location" type="text" placeholder="Enter your location" />
+        <div class="btn">
+          <button id="bttn">Weather Details</button>
+        </div>
+        <div id="weatherResults"></div>
+      </div>
+    </div>
+
+<!-- API Fetch -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const button = document.getElementById('bttn');
+    const input = document.getElementById('location');
+    const weatherResults = document.getElementById('weatherResults');
+
+    button.addEventListener('click', () => {
+      let location = input.value.trim();
+      if (!location) {
+        alert('Please enter a location');
+        return;
+      }
+
+      // Append country code only if not already present
+      if (!location.includes(',')) {
+        location += ',IN'; // Default to India
+      }
+
+      const apiKey = '388d4e775e15697bdacb8ea11ee1b5cf'; // Your API key
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(location)}&units=metric&appid=${apiKey}`;
+
+      weatherResults.innerHTML = 'Loading...';
+
+      fetch(url)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('City not found. Please check the spelling.And try again');
+          }
+          return response.json();
+        })
+        .then(data => {
+          const iconUrl = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+          weatherResults.innerHTML = `
+            <h3>Weather in ${data.name}</h3>
+            <p>Temperature: ${data.main.temp} °C</p>
+            <p>
+              Condition: ${data.weather[0].description}
+              <center>
+              <img src="${iconUrl}" alt="Weather icon" />
+              </center>
+            </p>
+            <p>Humidity: ${data.main.humidity}%</p>
+            <p>Wind Speed: ${data.wind.speed} m/s</p>
+          `;
+        })
+        .catch(error => {
+          weatherResults.innerHTML = `<p id="error";">${error.message}</p>`;
+        });
+    });
+
+    // Trigger fetch on Enter key in input box
+    input.addEventListener('keyup', event => {
+      if (event.key === 'Enter') {
+        button.click();
+      }
+    });
+  });
+</script>
+<!-- API Fetch -->
+
+
+<!-- Animation -->
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+      document.querySelector('.container').classList.add('show');
+    }, 50); // Delay to trigger transition correctly
+  });
+</script>
+<!-- Animation -->
+ 
+  </body>
+</html>

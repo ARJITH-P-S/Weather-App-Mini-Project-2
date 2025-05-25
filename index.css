@@ -1,0 +1,102 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Playwrite DK Loopet", cursive;
+    height: 100%;
+    margin: 0;
+}
+
+.background {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom,#020A18,#0863a5);
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    padding: 90px;
+    border-radius: 25px;
+    background-color: #071a3a;
+    color: white;
+    border: none;
+    box-shadow: 0 0 60px rgba(6, 193, 244, 0.2); /* blue soft glow */
+}
+
+.signup{
+    text-align: center;
+    margin: 20px;
+  
+}
+
+.signup h1{
+    padding: 30px;
+    font-size: 3rem;
+}
+
+
+.signup h3{
+    padding-bottom: 35px;
+    color: #0863a5;
+}
+
+#btn1{
+    height: 35px;
+    width: 150px;
+    border-radius: 8px;
+    background-color: #020A18;
+    border: 2px solid #0863a5;
+    color: white;
+    font-family:  "Playwrite DK Loopet", cursive;;
+}
+
+#btn1:hover{
+    background-color: #0863a5;
+    border: 2px solid black;
+    cursor: pointer;
+    font-weight: 900;
+    color: white;
+}
+
+/* effects */
+.main {          
+  opacity: 0;
+  transform: translateY(-250px);
+  transition: opacity 1.6s ease-out, transform 1.6s ease-out;
+}
+
+.main.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* effects */
+
+/* responsive */
+@media (max-width: 480px) {
+  .signup h1 {
+    font-size: 1.5rem;
+  }
+
+  .signup h3 {
+    font-size: 0.9rem;
+  }
+
+  #btn1 {
+    width: 100%;
+    font-size: 0.95rem;
+  }
+
+  .signup {
+    padding: 1.5rem 1rem;
+  }
+}
+/* responsive */
